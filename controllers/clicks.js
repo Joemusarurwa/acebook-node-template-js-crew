@@ -1,3 +1,4 @@
+const { ObjectID } = require("bson");
 const Click = require("../models/click");
 
 const ClicksController = {
@@ -6,7 +7,7 @@ const ClicksController = {
   },
 
   Create: (req, res) => {
-    console.log('hello')
+    console.log(req.body.click)
     const click = new Click(req.body);
     console.log('this is it' + click)
     click.save((err) => {
@@ -17,7 +18,14 @@ const ClicksController = {
       res.sendStatus(201);
 
     });
-  }
+  },
+
+  UpdateClick: (req, res) => {
+    const filter = { _id : ObjectID("62f10ad66cb3c81bd09d683b") }
+    const update = { click: 100 }
+    let doc = Click.findOneAndUpdate(filter, update)
+    console.log(doc.click)
+    }
 };
 
 module.exports = ClicksController;
