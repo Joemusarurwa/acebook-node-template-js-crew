@@ -1,12 +1,24 @@
 const { ObjectId } = require("mongodb");
 const mongoose = require("mongoose");
+const { Schema } = mongoose;
 
 const PostSchema = new mongoose.Schema({
   message: String,
   likes: Number,
+  comments: [{ type: Schema.Types.ObjectId, ref: 'Comment' }],
 }, 
 
 { timestamps: true });
+
+
+
+// const CommentSchema = new mongoose.Schema({
+//   comment: String,
+
+// });
+
+
+
 
 
 // { like: Number });
@@ -21,7 +33,9 @@ const PostSchema = new mongoose.Schema({
 
 
 
-
+// const Comment = mongoose.model('Comment', CommentSchema);
 const Post = mongoose.model("Post", PostSchema);
 
+
 module.exports = Post;
+// module.exports = Comment;

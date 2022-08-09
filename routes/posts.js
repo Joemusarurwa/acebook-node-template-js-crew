@@ -7,5 +7,6 @@ router.get("/", PostsController.Index);
 router.post("/", PostsController.Create);
 router.get("/new", PostsController.New);
 router.post(`/posts/${this._id}/likes`, PostsController.Index)
+router.post("/new-comment", PostsController.Comments)
 
 module.exports = router;
