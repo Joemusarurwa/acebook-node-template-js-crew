@@ -31,8 +31,9 @@ const PostsController = {
 
   LikePost: (req, res) => {
     console.log(req.body)
-    const action = req.body.action
-    if (action === "Like") {
+    console.log(req.session.user.email)
+    const actionz = req.body.actionz
+    if (actionz === "Like") {
       Post.findOneAndUpdate(req.body, {$inc: { likes_count: 1 }} ).exec( 
         function (err) {
           if (err) {

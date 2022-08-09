@@ -12,12 +12,12 @@ var updatePostStats = {
 
 var toggleButtonText = {
   Like: function(button) {
-      button.textContent = "Unlike";
-      console.log("Liked")
+      button.textContent = "Unlike 👎";
+      console.log("Liked 👍")
   },
   Unlike: function(button) {
-      button.textContent = "Like";
-      console.log("Unliked")
+      button.textContent = "Like 👍";
+      console.log("Unliked 👎")
   }
 };
 
@@ -28,10 +28,11 @@ var actOnPost = (event) =>  {
   let postId = event.target.dataset.postId;
   console.log(typeof postId)
   console.log(postId)
-  let action = event.target.textContent.trim();
-  toggleButtonText[action](event.target);
-  updatePostStats[action](postId);
-  idObj = {_id: postId, action: action}
+  let action = event.target.textContent.trim().slice(0, -2);
+  let actionz = action.trim()
+  toggleButtonText[actionz](event.target);
+  updatePostStats[actionz](postId);
+  idObj = {_id: postId, actionz: actionz}
   fetch('/posts/like-post', {
     method: 'POST',
     headers: {
