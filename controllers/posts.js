@@ -28,6 +28,29 @@ const PostsController = {
       res.status(201).redirect("/posts");
     });
   },
+
+  LikePost: (req, res) => {
+    console.log(req.body)
+    const action = req.body.action
+    if (action === "Like") {
+      Post.findOneAndUpdate(req.body, {$inc: { likes_count: 1 }} ).exec( 
+        function (err) {
+          if (err) {
+            console.log(err);
+          } else { 
+          }
+        });
+    } else { 
+      Post.findOneAndUpdate(req.body, {$inc: { likes_count: -1 }} ).exec( 
+        function (err) {
+          if (err) {
+            console.log(err);
+          } else { 
+          }
+        });
+      console.log("Now we would delete that like from the db")
+    }
+    }
 };
 
 module.exports = PostsController;

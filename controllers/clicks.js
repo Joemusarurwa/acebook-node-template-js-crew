@@ -6,7 +6,7 @@ const mongoose = require("mongoose");
 const ClicksController = {
 
   Create: (req, res) => {
-    console.log(req.body.click)
+    console.log(req.body)
     const click = new Click(req.body);
     console.log('this is it' + click)
     click.save((err) => {
