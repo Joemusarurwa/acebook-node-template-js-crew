@@ -30,7 +30,7 @@ updateButton.addEventListener('click', function(e) {
     headers: { 
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify({click: 1})
+    body: JSON.stringify({ "click": 1000000 })
     })
     .then(function(response) {
       if(response.ok) {

@@ -1,10 +1,9 @@
 const { ObjectID } = require("bson");
 const Click = require("../models/click");
+const mongoose = require("mongoose");
+
 
 const ClicksController = {
-  New: (req, res) => {
-    res.render("users/new", {});
-  },
 
   Create: (req, res) => {
     console.log(req.body.click)
@@ -21,11 +20,19 @@ const ClicksController = {
   },
 
   UpdateClick: (req, res) => {
-    const filter = { _id : ObjectID("62f10ad66cb3c81bd09d683b") }
-    const update = { click: 100 }
-    let doc = Click.findOneAndUpdate(filter, update)
-    console.log(doc.click)
-    }
+    console.log(req.body)
+
+   const currentClick = Click.find( { _id: "62f1175012ae9f0b30b6acf7" }, { _id: 0  } ).exec()
+
+    Click.findOneAndUpdate( { _id: "62f1175012ae9f0b30b6acf7" }, {$inc: { click: 1 }} ).exec( 
+      function (err) {
+        if (err) {
+          console.log(err);
+        } else { 
+        }
+      }
+    );
+  },
 };
 
 module.exports = ClicksController;

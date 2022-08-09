@@ -55,7 +55,7 @@ li.round3 {
 <ul class="posts">
   {{#each posts}}
 
-  <li class="round3">{{this.message}} {{this.createdAt}} {{this.likes}}
+  <li class="round3">{{this.message}} {{this.timePosted}} {{this.likes}} {{this._id}}
 
     <br><button onclick="likehandler(event)" class="like__btn button4">
       <span id="icon"><i class="far fa-thumbs-up"></i></span>
