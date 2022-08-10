@@ -1,11 +1,11 @@
 const { ObjectId } = require("mongodb");
 const mongoose = require("mongoose");
 
+// creates comments collection
 const CommentSchema = new mongoose.Schema({
   comment: String,
-  // post_id: _id in the posts table or this._id from the hbs file
-  // comment_author:
-  // time: true
+  time: { type: String, default: new Date().toLocaleString("en-GB") },
+  writer: {type: String, default: ""}
 });
 
 const Comment = mongoose.model('Comment', CommentSchema)
