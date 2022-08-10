@@ -25,6 +25,7 @@ var toggleButtonText = {
 
 var actOnPost = (event) =>  {
   console.log(event)
+  // console.log(request.session.user)
   let postId = event.target.dataset.postId;
   console.log(typeof postId)
   console.log(postId)
