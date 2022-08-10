@@ -10,6 +10,7 @@
 </div> 
 
 <head>
+
 <style>
 .button {
   background-color: #4CAF50; /* Green */
@@ -48,6 +49,7 @@ li.round3 {
 }
 </style>
 </head>
+
 </body>
 
  
@@ -55,13 +57,23 @@ li.round3 {
 <ul class="posts">
   {{#each posts}}
 
-  <li class="round3">{{this.message}} {{this.createdAt}} {{this.likes}}
-
-    <br><button onclick="likehandler(event)" class="like__btn button4">
+  <li class="round3"><h3>{{this.message}}</h3><h5> {{this.time}} posted by {{this.writer}}</h5> 
+   <button onclick="likehandler(event)" class="like__btn button4">
       <span id="icon"><i class="far fa-thumbs-up"></i></span>
       <span id="count">0</span> Like
     </button>
+    
+    <br><ul>{{#each this.comments}}
+    <br><li> {{this.comment}} <br><h5> @ {{this.time}} posted by {{this.writer}}</li></h5>
+    {{/each}}</ul>
 
+    <br>
+    <form id="comment" action="/posts/{{this._id}}/new-comment" method="post">
+    <input id="comment" type="text" name="comment" value="">
+    <input type="submit" value="comment" class="like__btn button4">
+    </form>
+
+</form>
   </li>
  
   <script src="/client.js"></script>

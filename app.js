@@ -15,6 +15,7 @@ const usersRouter = require("./routes/users");
 
 
 
+
 const app = express();
 
 // view engine setup
@@ -64,6 +65,7 @@ app.use("/clicked", clicksRouter);
 app.use("/posts", sessionChecker, postsRouter);
 app.use("/sessions", sessionsRouter);
 app.use("/users", usersRouter);
+
 
 
 
