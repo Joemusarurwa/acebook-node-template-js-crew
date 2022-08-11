@@ -47,11 +47,11 @@ li.round3 {
 
 </body>
 
-{{users}}
+
 
  
 <h1>Timeline</h1>
-<ul class="posts">
+<ul style="list-style: none;" class="posts">
   {{#each posts}}
 
   <li class="round3"><h3>{{this.message}}</h3><h5> {{this.time}} posted by 
@@ -61,7 +61,7 @@ li.round3 {
       <span id="count">0</span> Like
     </button>
     
-    <br><ul>{{#each this.comments}}
+    <br><ul style="list-style: none;">{{#each this.comments}}
     <br><li> {{this.comment}} <br><h5> @ {{this.time}} <a href="/users/{{this.writer}}" action="/users/{{this.writer}}" method='GET'> {{this.nameOfWriter}}</a> </li></h5>
     {{/each}}</ul>
 
