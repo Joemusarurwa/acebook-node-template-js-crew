@@ -50,19 +50,21 @@ li.round3 {
 </head>
 </body>
 
+<script src="/client.js"></script>
+
  
 <h1>Timeline</h1>
 <ul class="posts">
   {{#each posts}}
-  <script src="/client.js"></script>
 
-  <li class="round3">{{this.message}} {{this.timePosted}} {{this._id}} liked by: {{this.liked_by}}
+  <li class="round3">{{this.message}} {{this.timePosted}}
+
     <button onclick="actOnPost(event);"
       data-post-id="{{ this._id }}">Like 👍
     </button>
 
     <span id="likes-count-{{ this._id }}"> {{ this.likes_count}}</span>
-
+    
   </li>
  
 

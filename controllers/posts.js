@@ -17,6 +17,7 @@ const PostsController = {
   },
   Create: (req, res) => {
     console.log(req.body)
+    console.log(req.body.message)
     const post = new Post(req.body);
 
     post.each
@@ -29,33 +30,34 @@ const PostsController = {
     });
   },
 
-  LikePost: (req, res) => {
+  Like  : (req, res) => {
     const postId = { _id: req.body._id}
-    let userEmail = req.session.user.email
-    const actionz = req.body.actionz
-    if (actionz === "Like") {
-      // Need to add and if/else that checks if userEmail alread in posts like_count array! If it is, don't add a new like. 
-      // Mongo command db.posts.find( { "_id" : ObjectId("62f2dee97d38803437b745ce")}, { liked_by: "test200@example.com"  } )
-      Post.findOneAndUpdate(postId, { $push: { liked_by: userEmail } } ).exec()
-      Post.findOneAndUpdate(postId, { $inc: { likes_count: 1 } } ).exec( 
+    Post.findOneAndUpdate(postId, { $push: { liked_by: req.session.user.email } } ).exec()
+    Post.findOneAndUpdate(postId, { $inc: { likes_count: 1 } } ).exec( 
+      function (err) {
+        if (err) {
+          console.log(err);
+        } else { 
+          console.log(req.session.user.email + " 👍 liked post with ID: " + req.body._id)
+        }
+      }); 
+    },
+
+    Unlike: (req, res) => {
+      const postId = { _id: req.body._id}
+      Post.findOneAndUpdate(postId, {$inc: { likes_count: -1 }} ).exec( 
         function (err) {
           if (err) {
             console.log(err);
           } else { 
-            console.log(userEmail + " liked post with ID: " + req.body._id)
+            console.log(req.session.user.email + " 👎 unliked post with ID: " + req.body._id)
           }
         });
-    } else { 
-      Post.findOneAndUpdate(req.body, {$inc: { likes_count: -1 }} ).exec( 
-        function (err) {
-          if (err) {
-            console.log(err);
-          } else { 
-            console.log(userEmail + " unliked post with ID: " + req.body._id)
-          }
-        });
-    }
     }
 };
 
 module.exports = PostsController;
+
+
+      // Need to add and if/else that checks if userEmail alread in posts like_count array! If it is, don't add a new like. 
+      // Mongo command db.posts.find( { "_id" : ObjectId("62f2dee97d38803437b745ce")}, { liked_by: "test200@example.com"  } )

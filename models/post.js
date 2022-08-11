@@ -5,7 +5,7 @@ const PostSchema = new mongoose.Schema({
   message: String ,
   likes_count: Number ,
   liked_by: { type: Array, default: [] },
-  timePosted: { type: Date, default: Date.now },
+  timePosted: { type: String, default: new Date().toLocaleString("en-GB") },
 });
 
 
