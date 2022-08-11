@@ -7,6 +7,7 @@ const PostSchema = new mongoose.Schema({
   likes: Number,
   comments: [{ type: Schema.Types.ObjectId, ref: 'Comment' }],
   writer: {type: String, default: ""},
+  nameOfWriter: {type: String, default: ""},
   time: { type: String, default: new Date().toLocaleString("en-GB") }
 });
 

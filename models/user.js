@@ -1,11 +1,16 @@
 const mongoose = require("mongoose");
 const uniqueValidator = require('mongoose-unique-validator');
-
+const { Schema } = mongoose;
 
 const UserSchema = new mongoose.Schema({
   email: { type: String, required: true, unique: true },
   password: { type: String, required: true },
-  time: { type: Date, default: Date.now }
+  first_name: { type: String, required: true },
+  surname: { type: String, required: true },
+  DOB: { type: String, required: true },
+  time: { type: Date, default: Date.now },
+  posts: [{ type: Schema.Types.ObjectId, ref: 'Post' }],
+  friends: [{ type: Schema.Types.ObjectId, ref: 'User' }]
 });
 
 

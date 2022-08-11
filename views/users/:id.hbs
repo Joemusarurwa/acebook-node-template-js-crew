@@ -1,0 +1,13 @@
+<h1>Hello, {{users.first_name}}</h1>
+<h1> Profile page</h1>
+<ul class="users">
+
+  
+  <br>{{users.first_name}} {{users.surname}}
+  <br>Birthday: {{users.DOB}}
+  <br>Recent posts:
+{{#each users.posts}}
+  <li>{{this.message}}</li>
+  {{/each}}
+  </ul>
+ 

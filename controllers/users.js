@@ -1,5 +1,6 @@
 const User = require("../models/user");
 
+
 const UsersController = {
   New: (req, res) => {
     res.render("users/new", {});
@@ -17,6 +18,29 @@ const UsersController = {
       
     });
   },
+
+  Profile: (req, res) => {
+    User.findOne({ email: req.params.id }).populate("posts").exec((err, users) => {
+      if (err) {
+        throw err;
+      }
+      res.render("users/:id", { users: users });
+    })
+
+
+  }
+
+  // addFriend: (req, res) => {
+  //   User.findOne({ email: req.params.id }).populate("friends").exec((err, users) => {
+  //     if (err) {
+  //       throw err;
+  //     }
+  //     res.render("users/:id", { users: users });
+  //   })
+
+
+  // }
+
 };
 
 module.exports = UsersController;
