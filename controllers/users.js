@@ -1,7 +1,7 @@
 const User = require("../models/user");
 const multer = require('multer');
 
-const helpers = require("./public/javascripts/helpers");
+const helpers = require("../public/javascripts/helpers");
 
 const storage = multer.diskStorage({
   destination: function(req, file, cb) {
