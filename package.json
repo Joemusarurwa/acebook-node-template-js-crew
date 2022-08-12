@@ -27,7 +27,8 @@
     "mongodb": "^3.4.1",
     "mongoose": "^6.0.0",
     "mongoose-unique-validator": "^3.1.0",
-    "morgan": "~1.9.1"
+    "morgan": "~1.9.1",
+    "react-input-emoji": "^4.1.0"
   },
   "devDependencies": {
     "cypress": "^9.5.1",
