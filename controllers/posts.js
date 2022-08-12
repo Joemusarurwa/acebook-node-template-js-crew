@@ -27,7 +27,7 @@ const PostsController = {
     // saves a new post within a variable
     const post = new Post(req.body);
     // saves open session's email address into writer variable
-    let writer = req.session.user.email
+    let writer = req.session.user._id
     let nameOfWriter = req.session.user.first_name
     let surnameOfWriter = req.session.user.surname
     // accesses writer field for this new post, saves the writer variable 
@@ -83,7 +83,7 @@ const PostsController = {
     // saves new comment into variable
     const comment = new Comment(req.body)
     // saves open session's email address into writer variable
-    let writer = req.session.user.email;
+    let writer = req.session.user._id;
     // accesses writer field for this new comment, saves the writer variable 
     // (the current session's email address) inside
     comment.writer = writer;

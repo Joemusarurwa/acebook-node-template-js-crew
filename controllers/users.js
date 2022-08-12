@@ -20,7 +20,8 @@ const UsersController = {
   },
 
   Profile: (req, res) => {
-    User.findOne({ email: req.params.id }).populate("posts").exec((err, users) => {
+    User.findOne({ _id: req.params.id }).populate("posts").exec((err, users) => {
+      console.log(req.params.id)
       if (err) {
         throw err;
       }
