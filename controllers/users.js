@@ -1,4 +1,7 @@
 const User = require("../models/user");
+const multer = require('multer');
+
+const helpers = require("./public/javascripts/helpers");
 
 
 const UsersController = {
