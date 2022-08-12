@@ -9,7 +9,28 @@
   <br><label for="surname">Surname: </label>
   <input id="surname" type="surname" name="surname" value="" required>
   <br><label for="DOB">Date of birth: </label>
-  <input id="DOB" type="DOB" name="DOB" value="" required>
-  <input id="profilePic" type="DOB" name="DOB" value="" required>
+  <input id="DOB" type="date" name="DOB" value="" required><br>
+  
+  <br> <div class="topright">
+         <label>Upload your Profile image:</label>
+        <method="POST" action="/images" enctype="multipart/form-data">
+        <input type="file" name="profile_pic" />
+    </div>
+    <div class="topright">
+        <input type="submit" name="btn_upload_profile_pic" value="Upload" />
+    </div>
   <br><input id="submit" type="submit" value="Submit">
+  
 </form>
+
+
+{{!-- <form method="POST" action="/images" enctype="multipart/form-data">
+    <div class="topright">
+         <label>Select an image:</label>
+        
+        <input type="file" name="profile_pic" />
+    </div>
+    <div class="topright">
+        <input type="submit" name="btn_upload_profile_pic" value="Upload" />
+    </div>
+</form> --}}
