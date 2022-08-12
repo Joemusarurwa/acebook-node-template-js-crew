@@ -32,7 +32,6 @@ const PostsController = {
 
   Like  : (req, res) => {
     const postId = { _id: req.body._id}
-    Post.findOneAndUpdate(postId, { $push: { liked_by: req.session.user.email } } ).exec()
     Post.findOneAndUpdate(postId, { $inc: { likes_count: 1 } } ).exec( 
       function (err) {
         if (err) {
