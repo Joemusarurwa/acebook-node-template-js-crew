@@ -1,13 +1,122 @@
 
+<style>
+.button {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.button4 {border-radius: 8px;}
+
+li.round2 {
+  border: 2px solid dodgerblue;;
+  border-radius: 8px;
+  padding: 5px;
+}
+
+li.round3 {
+  border: 2px solid dodgerblue;;
+  border-radius: 12px;
+  padding: 5px;
+}
+
+</style>
+</head>
+
+</body>
+
+<head>
+<style> 
+textarea {
+  width: 60%;
+  height: 150px;
+  padding: 5px 20px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  background-color: #f8f8f8;
+  font-size: 16px;
+  resize: none;
+}
+</style>
+</head>
+
+
+<br><form id="new-post-form" action="/posts" method="post" >
+  <label for="message"></label>
+  <input id="message" type="text" name="message" value="">
+  <input type="submit" class="like__btn button4" value="post">
+
+
+</form>
+
+
+
+  </body>
+ </head>
+
+<script src="/client.js"></script>
+
 <h1> Profile page</h1>
-<ul class="users">
+<ul style="list-style: none;" class="users">
 
   
-  <br>{{users.first_name}} {{users.surname}}
+  <br><strong> <font size="+1">{{users.first_name}} {{users.surname}}</font></strong>
   <br>Birthday: {{users.DOB}}
-  <br>Recent posts:
+  <br><h3>Recent posts:</h3>
+  <div class="overflow-auto">
 {{#each users.posts}}
-  <li>{{this.message}}</li>
+  <li class="round3"><h3>{{this.message}}</h3><h5> {{this.timePosted}}</a></h5> 
+{{!-- {{#each this.comments}}
+<li>{{this.comment}}</li>
+  {{/each}}
+  </li> --}}
+
+  <br><ul style="list-style: none;">{{#each this.comments}}
+    <br><li> {{this.comment}} <br><h5> @ {{this.time}} <a href="/users/{{this.writer}}" action="/users/{{this.writer}}" method='GET'> {{this.nameOfWriter}}</a> </li></h5>
+    {{/each}}</ul>
+     <br>
+    {{!-- <form id="comment" action="/users/{{req.params.body}}" method="post">
+    <input id="comment" type="text" name="comment" value="">
+    <input type="submit" value="comment" class="like__btn button4"> --}}
+
+    </div>
+    </form>
+
+
+{{!-- 
+{}
+  <li class="round3"><h3>{{this.message}}</h3><h5> {{this.timePosted}} posted by 
+    <a href="/users/{{this.writer}}" action="/users/{{this.writer}}" method='GET'> {{this.nameOfWriter}}</a></h5> 
+     
+     <button onclick="actOnPost(event);"
+      data-post-id="{{ this._id }}">Like 👍
+    </button>
+    <span id="likes-count-{{ this._id }}"> {{ this.likes_count}}</span>
+    
+    <br><ul style="list-style: none;">{{#each this.comments}}
+    <br><li> {{this.comment}} <br><h5> @ {{this.time}} <a href="/users/{{this.writer}}" action="/users/{{this.writer}}" method='GET'> {{this.nameOfWriter}}</a> </li></h5>
+    {{/each}}</ul>
+
+    <br>
+    <form id="comment" action="/posts/{{this._id}}/new-comment" method="post">
+    <input id="comment" type="text" name="comment" value="">
+    <input type="submit" value="comment" class="like__btn button4">
+    </form>
+
+</form>
+  </li>
+
+  {{/each}}
+</ul> --}}
+
   {{/each}}
   </ul>
  
