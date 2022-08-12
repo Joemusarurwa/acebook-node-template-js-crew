@@ -66,22 +66,21 @@ textarea {
 <ul style="list-style: none;" class="posts">
   {{#each posts}}
 
-  <li class="round3"><h3>{{this.message}}</h3><h5> {{this.timePosted}} posted by 
-    <a href="/users/{{this.writer}}" action="/users/{{this.writer}}" method='GET'> {{this.nameOfWriter}}</a></h5> 
-     
-     <button onclick="actOnPost(event);"
-      data-post-id="{{ this._id }}">Like 👍
-    </button>
+  <li class="round3"><p class="lead">{{this.message}}</p><p> {{this.timePosted}} posted by 
+    <a href="/users/{{this.writer}}" action="/users/{{this.writer}}" method='GET'> {{this.nameOfWriter}}</a></p> 
+     <button class="btn btn-outline-primary btn-sm" onclick="actOnPost(event);"
+      data-post-id="{{ this._id }}">Like 👍</button>
     <span id="likes-count-{{ this._id }}"> {{ this.likes_count}}</span>
     
     <br><ul style="list-style: none;">{{#each this.comments}}
-    <br><li> {{this.comment}} <br><h5> @ {{this.time}} <a href="/users/{{this.writer}}" action="/users/{{this.writer}}" method='GET'> {{this.nameOfWriter}}</a> </li></h5>
+    <br><li> {{this.comment}}
+      <p><small><em>Posted by <a href="/users/{{this.writer}}" action="/users/{{this.writer}}" method='GET'> {{this.nameOfWriter}} </a> @ {{this.time}} </em></small></li></p>
     {{/each}}</ul>
 
     <br>
     <form id="comment" action="/posts/{{this._id}}/new-comment" method="post">
     <input id="comment" type="text" name="comment" value="">
-    <input type="submit" value="comment" class="like__btn button4">
+    <input type="submit" value="comment" class="btn btn-primary">
     </form>
 
 </form>

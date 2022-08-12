@@ -1,13 +1,7 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+.center-pills {
+  display: flex;
+  justify-content: center;
 }
-
-a {
-  color: #00B7FF;
-}
-
-
 
 /* Add a black background color to the top navigation*/
 .topnav {
@@ -140,4 +134,4 @@ a {
 /* Add some top padding to the page content to prevent sudden quick movement (as the navigation bar gets a new position at the top of the page (position:fixed and top:0) */
 .sticky + .content {
   padding-top: 60px;
-}
+} */
