@@ -1,6 +1,19 @@
  <head>
   <body>
 
+    <style>
+.topright {
+  position: absolute;
+  top: 118px;
+  right: 16px;
+  font-size: 18px;
+}
+body {
+  background-color:LightGray;
+}
+</style>
+
+
 
 <form id="new-post-form" action="/posts" method="post">
   <label for="message">Message: </label>
@@ -8,6 +21,17 @@
   <input type="submit" value="Submit">
 
 
+</form>
+
+<form method="POST" action="/public/images" enctype="multipart/form-data">
+    <div class="topright">
+         <label>Select an image:</label>
+        
+        <input type="file" name="profile_pic" />
+    </div>
+    <div class="topright">
+        <input type="submit" name="btn_upload_profile_pic" value="Upload" />
+    </div>
 </form>
 
 

@@ -1,7 +1,10 @@
+
 const Post = require("../models/post");
 const Comment = require("../models/comment");
 
 const User = require("../models/user");
+const express = require("express");
+const app = express();
 
 const PostsController = {
   Index: (req, res) => {
@@ -55,10 +58,7 @@ const PostsController = {
       if (err) {
         throw err;
       }
-
       // finds the user within users collection by id
-      
-
       res.status(201).redirect("/posts");
     });
   },
@@ -98,8 +98,12 @@ const PostsController = {
   });
   },
 
+  Images: (req, res) => {
+    console.log("hello")
+    res.status(201).redirect("/posts");
+  },
+
+  
 };
-
-
 
 module.exports = PostsController;
