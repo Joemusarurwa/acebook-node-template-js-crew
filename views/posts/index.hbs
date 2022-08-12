@@ -1,6 +1,9 @@
-{{!-- class="topnav" 
- "pill-nav"
- "navbar"--}}
+<div class="pill-nav">
+  <a class="active" href="/posts">Acebook</a>
+  <a class="new-post-link" href="/posts/new">New post</a>
+  <a class="split" href="/sessions/new" action='/sessions?_method=DELETE' method='POST'>Log out</a>
+ 
+</div> 
 
 
 
@@ -22,15 +25,6 @@
 
 .button4 {border-radius: 8px;}
 
-
-
-</style>
-</head>
-<body>
-
-<body>
-<head>
-<style>
 li.round2 {
   border: 2px solid dodgerblue;;
   border-radius: 8px;
@@ -42,24 +36,27 @@ li.round3 {
   border-radius: 12px;
   padding: 5px;
 }
+
 </style>
 </head>
 
 </body>
 
 
+<script src="/client.js"></script>
 
  
 <h1>Timeline</h1>
 <ul style="list-style: none;" class="posts">
   {{#each posts}}
 
-  <li class="round3"><h3>{{this.message}}</h3><h5> {{this.time}} posted by 
+  <li class="round3"><h3>{{this.message}}</h3><h5> {{this.timePosted}} posted by 
     <a href="/users/{{this.writer}}" action="/users/{{this.writer}}" method='GET'> {{this.nameOfWriter}}</a></h5> 
-   <button onclick="likehandler(event)" class="like__btn button4">
-      <span id="icon"><i class="far fa-thumbs-up"></i></span>
-      <span id="count">0</span> Like
+     
+     <button onclick="actOnPost(event);"
+      data-post-id="{{ this._id }}">Like 👍
     </button>
+    <span id="likes-count-{{ this._id }}"> {{ this.likes_count}}</span>
     
     <br><ul style="list-style: none;">{{#each this.comments}}
     <br><li> {{this.comment}} <br><h5> @ {{this.time}} <a href="/users/{{this.writer}}" action="/users/{{this.writer}}" method='GET'> {{this.nameOfWriter}}</a> </li></h5>
@@ -73,8 +70,6 @@ li.round3 {
 
 </form>
   </li>
- 
-  <script src="/client.js"></script>
 
   {{/each}}
 </ul>

@@ -21,6 +21,9 @@ const PostsController = {
   },
 
   Create: (req, res) => {
+    console.log(req.body)
+    console.log(req.body.message)
+
     // saves a new post within a variable
     const post = new Post(req.body);
     // saves open session's email address into writer variable
@@ -63,6 +66,19 @@ const PostsController = {
     });
   },
 
+
+  Like  : (req, res) => {
+    const postId = { _id: req.body._id}
+    Post.findOneAndUpdate(postId, { $inc: { likes_count: 1 } } ).exec( 
+      function (err) {
+        if (err) {
+          console.log(err);
+        } else { 
+          console.log(req.session.user.email + " 👍 liked post with ID: " + req.body._id)
+        }
+      }); 
+    },
+
   Comments: (req, res) => {
     // saves new comment into variable
     const comment = new Comment(req.body)
@@ -97,6 +113,7 @@ const PostsController = {
       res.status(201).redirect("/posts");
   });
   },
+
 
 };
 
