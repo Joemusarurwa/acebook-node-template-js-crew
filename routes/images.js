@@ -4,7 +4,7 @@ const router = express.Router();
 
 const ImagesController = require("../controllers/images");
 
-router.post("/public/images", ImagesController.Images)
+router.post("/", ImagesController.Images)
 
 
 module.exports = router;
